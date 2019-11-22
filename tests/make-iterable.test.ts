@@ -27,6 +27,13 @@ describe("Array tests", () => {
     expect(iterableX.push).toBeDefined();
     expect(iterableX.pop).toBeDefined();
   });
+  it("should convert function", () => {
+    let x = function(){},
+      iterableX = makeIterable(x);
+    expect(iterableX.push(1,2,3,4,5)).toBe(5);
+    expect(iterableX.indexOf(3)).toBe(2);
+    expect(iterableX[1]).toBe(2);
+  });
 });
 
 describe("Iterator tests", () => {
