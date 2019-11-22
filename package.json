@@ -1,0 +1,52 @@
+{
+  "name": "@lopatnov/make-iterable",
+  "version": "1.0.0",
+  "description": "This TypeScript library makes objects as Array like and iterable.",
+  "author": "lopatnov",
+  "license": "Apache-2.0",
+  "homepage": "https://lopatnov.github.io/make-iterable/",
+  "umdName": "makeIterable",
+  "source": "src/make-iterable.ts",
+  "main": "dist/make-iterable.js",
+  "main_min": "dist/make-iterable.min.js",
+  "module": "dist/make-iterable.es.js",
+  "types": "dist/make-iterable.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lopatnov/make-iterable.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lopatnov/make-iterable/issues"
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "watch": "rollup -cw",
+    "test": "jest"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "TypeScript",
+    "JavaScript",
+    "Iterable",
+    "Iterator",
+    "Array",
+    "ArrayLike"
+  ],
+  "devDependencies": {
+    "@types/jest": "^24.0.23",
+    "@types/typescript": "^2.0.0",
+    "jest": "^24.9.0",
+    "jest-config": "^24.9.0",
+    "rollup": "^1.27.3",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-sourcemaps": "^0.4.2",
+    "rollup-plugin-typescript2": "^0.25.2",
+    "rollup-plugin-uglify": "^6.0.3",
+    "ts-jest": "^24.1.0",
+    "typescript": "^3.7.2"
+  }
+}
