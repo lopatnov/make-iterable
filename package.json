@@ -1,6 +1,6 @@
 {
   "name": "@lopatnov/make-iterable",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "This TypeScript library makes objects as Array like and iterable.",
   "author": "lopatnov",
   "license": "Apache-2.0",
