@@ -25,8 +25,8 @@ npm install @lopatnov/make-iterable
 
 ## Polyfills
 
-Symbol: https://github.com/rousan/symbol-es6
-IE polyfills: https://github.com/ben-yip/ie7js
+* Symbol: https://github.com/rousan/symbol-es6
+* IE polyfills: https://github.com/ben-yip/ie7js
 
 ## Import package to the project
 
