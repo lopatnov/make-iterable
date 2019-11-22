@@ -63,7 +63,7 @@ console.log(`iterableX.hello = ${iterableX.hello}`); // "world"
 
 See, how it's working: [https://runkit.com/lopatnov/make-iterable-demo](https://runkit.com/lopatnov/make-iterable-demo)
 
-Test it with a runkit: [https://npm.runkit.com/make-iterable](https://npm.runkit.com/make-iterable)
+Test it with a runkit: [https://npm.runkit.com/@lopatnov/make-iterable](https://npm.runkit.com/@lopatnov/make-iterable)
 
 # Rights and Agreements
 
