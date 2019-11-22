@@ -1,6 +1,6 @@
 # make-iterable
 
-[![NPM version](https://badge.fury.io/js/%40lopatnov%2Fmake-iterable.svg)](https://badge.fury.io/js/%40lopatnov%2Fmake-iterable.svg)
+[![NPM version](https://badge.fury.io/js/%40lopatnov%2Fmake-iterable.svg)](https://www.npmjs.com/package/@lopatnov/make-iterable)
 ![License](https://img.shields.io/github/license/lopatnov/make-iterable)
 [![Build Status](https://travis-ci.org/lopatnov/make-iterable.png?branch=master)](https://travis-ci.org/lopatnov/make-iterable)
 [![Twitter](https://img.shields.io/twitter/url?url=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2Fmake-iterable)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2Fmake-iterable)
