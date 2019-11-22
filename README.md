@@ -5,7 +5,7 @@
 [![Build Status](https://travis-ci.org/lopatnov/make-iterable.png?branch=master)](https://travis-ci.org/lopatnov/make-iterable)
 [![Twitter](https://img.shields.io/twitter/url?url=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2Fmake-iterable)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2Fmake-iterable)
 
-This TypeScript library makes objects to Array like and iterable.
+This TypeScript library makes objects as Array like and iterable.
 
 # Install
 
