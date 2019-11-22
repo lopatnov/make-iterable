@@ -5,7 +5,7 @@
 [![Build Status](https://travis-ci.org/lopatnov/make-iterable.png?branch=master)](https://travis-ci.org/lopatnov/make-iterable)
 [![Twitter](https://img.shields.io/twitter/url?url=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2Fmake-iterable)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2Fmake-iterable)
 
-This TypeScript library makes objects to Array like and iterable.
+This TypeScript library makes objects as Array like and iterable.
 
 # Install
 
@@ -28,7 +28,7 @@ npm install @lopatnov/make-iterable
 TypeScript:
 
 ```typescript
-import makeIterable from '@lopatnov/make-iterable';
+import makeIterable from "@lopatnov/make-iterable";
 ```
 
 or JavaScript:
@@ -57,6 +57,33 @@ console.log(`x === iterableX ? ${x === iterableX}`); // true
 console.log(`indexOf(30) = ${iterableX.indexOf(30)}`); // 2
 console.log(`[...iterableX] = ${[...iterableX]}`); // [10,20,30]
 console.log(`iterableX.hello = ${iterableX.hello}`); // "world"
+```
+
+From v.1.1.0 it works with Function prototype like:
+
+```typescript
+class Sample {
+  static count = 0;
+  message: string;
+
+  constructor(message: string) {
+    Sample.count++;
+    this.message = message;
+  }
+}
+
+makeIterable(Sample.prototype);
+
+let x = new Sample("Hello world") as Sample & any[];
+let y = new Sample("It working!") as Sample & any[];
+x.push(true, false, true, true, false, true, false, true);
+y.push("hello", "world", "!");
+
+console.log(Sample.count); // 2
+console.log([...x]); // true, false, true, true, false, true, false, true
+console.log([...y]); // "hello", "world", "!"
+console.log(x.message); // Hello world
+console.log(y.message); // It working!
 ```
 
 # Demo

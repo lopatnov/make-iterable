@@ -8,13 +8,12 @@
       return objNames.indexOf(name) === -1;
   });
   function attachIterable(value) {
-      if (value === undefined || value === null)
-          throw new Error("Incorrect argument: " + value);
       value[Symbol.iterator] = function () {
+          var context = this;
           return {
               next: function () {
-                  if (value.length && this._index < value.length) {
-                      return { value: value[this._index++], done: false };
+                  if (context.length && this._index < context.length) {
+                      return { value: context[this._index++], done: false };
                   }
                   else {
                       return { done: true };
@@ -27,7 +26,9 @@
   function attachArrayProperties(value) {
       iterableNames.forEach(function (name) {
           if (Array.prototype[name] instanceof Function) {
-              value[name] = Array.prototype[name].bind(value);
+              value[name] = function () {
+                  return Array.prototype[name].apply(this, arguments);
+              };
           }
           else {
               if (name === "length") {
@@ -52,6 +53,13 @@
    * @returns the value with it's type and any[]
    */
   function makeIterable(value) {
+      if (value === undefined ||
+          value === null ||
+          typeof value === "boolean" ||
+          typeof value === "number" ||
+          typeof value === "string") {
+          throw new Error("Incorrect argument: " + value);
+      }
       attachArrayProperties(value);
       attachIterable(value);
       return value;

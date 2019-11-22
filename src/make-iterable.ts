@@ -5,13 +5,12 @@ let objNames = Object.getOwnPropertyNames(Object.prototype),
   });
 
 function attachIterable(value: any) {
-  if (value === undefined || value === null)
-    throw new Error(`Incorrect argument: ${value}`);
   value[Symbol.iterator] = function() {
+    let context = this;
     return {
       next: function() {
-        if (value.length && this._index < value.length) {
-          return { value: value[this._index++], done: false };
+        if (context.length && this._index < context.length) {
+          return { value: context[this._index++], done: false };
         } else {
           return { done: true };
         }
@@ -22,9 +21,11 @@ function attachIterable(value: any) {
 }
 
 function attachArrayProperties(value: any) {
-  iterableNames.forEach((name) => {
+  iterableNames.forEach(name => {
     if (Array.prototype[name] instanceof Function) {
-      value[name] = Array.prototype[name].bind(value);
+      value[name] = function() {
+        return Array.prototype[name].apply(this, arguments);
+      };
     } else {
       if (name === "length") {
         var index = 0;
@@ -48,6 +49,16 @@ function attachArrayProperties(value: any) {
  * @returns the value with it's type and any[]
  */
 function makeIterable<T>(value: T): T & Array<any> {
+  if (
+    value === undefined ||
+    value === null ||
+    typeof value === "boolean" ||
+    typeof value === "number" ||
+    typeof value === "string"
+  ) {
+    throw new Error("Incorrect argument: " + value);
+  }
+
   attachArrayProperties(value);
   attachIterable(value);
   return value as T & any[];
