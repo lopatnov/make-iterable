@@ -1,6 +1,6 @@
 # make-iterable
 
-[![NPM version](https://badge.fury.io/js/make-iterable.svg)](https://badge.fury.io/js/make-iterable)
+[![NPM version](https://badge.fury.io/js/%40lopatnov%2Fmake-iterable.svg)](https://badge.fury.io/js/%40lopatnov%2Fmake-iterable.svg)
 ![License](https://img.shields.io/github/license/lopatnov/make-iterable)
 [![Build Status](https://travis-ci.org/lopatnov/make-iterable.png?branch=master)](https://travis-ci.org/lopatnov/make-iterable)
 [![Twitter](https://img.shields.io/twitter/url?url=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2Fmake-iterable)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2Fmake-iterable)
@@ -11,7 +11,7 @@ This TypeScript library makes objects to Array like and iterable.
 
 Node:
 
-[![https://nodei.co/npm/make-iterable.png?downloads=true&downloadRank=true&stars=true](https://nodei.co/npm/make-iterable.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/make-iterable)
+[![https://nodei.co/npm/@lopatnov/make-iterable.png?downloads=true&downloadRank=true&stars=true](https://nodei.co/npm/@lopatnov/make-iterable.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/@lopatnov/make-iterable)
 
 ```shell
 npm install @lopatnov/make-iterable
@@ -28,13 +28,13 @@ npm install @lopatnov/make-iterable
 TypeScript:
 
 ```typescript
-import getInternalType from "make-iterable";
+import makeIterable from '@lopatnov/make-iterable';
 ```
 
 or JavaScript:
 
 ```javascript
-var makeIterable = require("make-iterable");
+var makeIterable = require("@lopatnov/make-iterable");
 ```
 
 ## Make Iterable
