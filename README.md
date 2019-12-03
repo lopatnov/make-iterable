@@ -93,7 +93,7 @@ console.log(y.message); // It working!
 
 # Demo
 
-See, how it's working: [https://runkit.com/lopatnov/make-iterable-demo](https://runkit.com/lopatnov/make-iterable-demo)
+See, how it's working: [https://runkit.com/lopatnov/make-iterable-1.1.0-demo](https://runkit.com/lopatnov/make-iterable-1.1.0-demo)
 
 Test it with a runkit: [https://npm.runkit.com/@lopatnov/make-iterable](https://npm.runkit.com/@lopatnov/make-iterable)
 
