@@ -26,6 +26,14 @@
   function attachArrayProperties(value) {
       iterableNames.forEach(function (name) {
           if (Array.prototype[name] instanceof Function) {
+              Object.defineProperty(value, name, {
+                  value: function () {
+                      return Array.prototype[name].apply(this, arguments);
+                  },
+                  configurable: true,
+                  writable: true,
+                  enumerable: false
+              });
               value[name] = function () {
                   return Array.prototype[name].apply(this, arguments);
               };
@@ -38,7 +46,9 @@
                   }
                   Object.defineProperty(value, "length", {
                       value: index,
-                      writable: true
+                      writable: true,
+                      enumerable: false,
+                      configurable: false
                   });
               }
               else {
