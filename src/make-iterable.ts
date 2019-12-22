@@ -5,6 +5,9 @@ let objNames = Object.getOwnPropertyNames(Object.prototype),
   });
 
 function attachIterable(value: any) {
+  if (!Symbol || !Symbol.iterator) {
+    return;
+  }
   value[Symbol.iterator] = function() {
     let context = this;
     return {
@@ -32,7 +35,8 @@ function attachArrayProperties(value: any) {
         enumerable: false
       });
       value[name] = function() {
-        return Array.prototype[name].apply(this, arguments);
+        const arrayFunction = Array.prototype[name];
+        return arrayFunction.apply(this, arguments);
       };
     } else {
       if (name === "length") {

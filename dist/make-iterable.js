@@ -8,6 +8,9 @@
       return objNames.indexOf(name) === -1;
   });
   function attachIterable(value) {
+      if (!Symbol || !Symbol.iterator) {
+          return;
+      }
       value[Symbol.iterator] = function () {
           var context = this;
           return {
@@ -35,7 +38,8 @@
                   enumerable: false
               });
               value[name] = function () {
-                  return Array.prototype[name].apply(this, arguments);
+                  var arrayFunction = Array.prototype[name];
+                  return arrayFunction.apply(this, arguments);
               };
           }
           else {
