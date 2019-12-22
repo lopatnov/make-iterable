@@ -35,9 +35,9 @@ or JavaScript:
 var makeIterable = require("@lopatnov/make-iterable");
 ```
 
-## Make Iterable
+## Make Objects Iterable and Array-Like
 
-**makeIterable<T>(value: T): T | any[]**
+### `makeIterable<T>(value: T): T | any[]`
 
 ```typescript
 let x = {
@@ -57,7 +57,7 @@ console.log(`[...iterableX] = ${[...iterableX]}`); // [10,20,30]
 console.log(`iterableX.hello = ${iterableX.hello}`); // "world"
 ```
 
-From v.1.1.0 it works with Function prototype like:
+From 1.1.0 version it works with Function prototype to make array-like object:
 
 ```typescript
 class Sample {
@@ -72,8 +72,8 @@ class Sample {
 
 makeIterable(Sample.prototype);
 
-let x = new Sample("Hello world") as Sample & any[];
-let y = new Sample("It working!") as Sample & any[];
+let x = new Sample("Hello world") as Sample & any[]; // makes array-like object
+let y = new Sample("It working!") as Sample & any[]; // makes array-like object
 x.push(true, false, true, true, false, true, false, true);
 y.push("hello", "world", "!");
 
@@ -83,6 +83,8 @@ console.log([...y]); // "hello", "world", "!"
 console.log(x.message); // Hello world
 console.log(y.message); // It working!
 ```
+
+Before 1.0.0 version it works with Function prototype like with array-like object.
 
 # Demo
 
