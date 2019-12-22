@@ -75,7 +75,7 @@ function makeIterable<T>(value: T): T & Array<any> {
     typeof value === "number" ||
     typeof value === "string"
   ) {
-    throw new Error("Incorrect argument: " + value);
+    throw new Error(`Incorrect argument: ${value}`);
   }
 
   attachArrayProperties(value);
