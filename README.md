@@ -9,8 +9,6 @@ This TypeScript library makes objects as Array like and iterable.
 
 # Install
 
-Node:
-
 [![https://nodei.co/npm/@lopatnov/make-iterable.png?downloads=true&downloadRank=true&stars=true](https://nodei.co/npm/@lopatnov/make-iterable.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/@lopatnov/make-iterable)
 
 ```shell
