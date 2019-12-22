@@ -23,11 +23,6 @@ npm install @lopatnov/make-iterable
 <script src="//lopatnov.github.io/make-iterable/dist/make-iterable.min.js"></script>
 ```
 
-## Polyfills
-
-* Symbol: https://github.com/rousan/symbol-es6
-* IE polyfills: https://github.com/ben-yip/ie7js
-
 ## Import package to the project
 
 TypeScript:
