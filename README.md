@@ -135,7 +135,7 @@ for (var index in z) {
 
 ## Demo
 
-See, how it's working: [https://runkit.com/lopatnov/make-iterable-demo](https://runkit.com/lopatnov/make-iterable-demo)
+See, how it's working: [https://runkit.com/lopatnov/make-iterable-demo-1.2.0](https://runkit.com/lopatnov/make-iterable-demo-1.2.0)
 
 Test it with a runkit: [https://npm.runkit.com/@lopatnov/make-iterable](https://npm.runkit.com/@lopatnov/make-iterable)
 
