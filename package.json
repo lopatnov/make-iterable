@@ -1,6 +1,6 @@
 {
   "name": "@lopatnov/make-iterable",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "This TypeScript library makes objects as Array like and iterable.",
   "author": "lopatnov",
   "license": "Apache-2.0",
@@ -21,9 +21,9 @@
   "scripts": {
     "build": "rollup -c",
     "watch": "rollup -cw",
-    "test": "jest",
-    "publish-npm": "node ./publish-gpr.js -s https://registry.npmjs.org",
-    "publish-gpr": "node ./publish-gpr.js -s https://npm.pkg.github.com"
+    "configure-npm": "node ./set-registry.js -s https://registry.npmjs.org",
+    "configure-gpr": "node ./set-registry.js -s https://npm.pkg.github.com",
+    "test": "jest"
   },
   "files": [
     "dist"
@@ -40,6 +40,7 @@
     "ArrayLike"
   ],
   "devDependencies": {
+    "@lopatnov/rollup-plugin-uglify": "^1.2.1",
     "@types/jest": "^24.0.23",
     "@types/typescript": "^2.0.0",
     "jest": "^24.9.0",
@@ -50,7 +51,7 @@
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-sourcemaps": "^0.4.2",
     "rollup-plugin-typescript2": "^0.25.2",
-    "rollup-plugin-uglify": "^6.0.3",
+    "terser": "^4.4.3",
     "ts-jest": "^24.1.0",
     "typescript": "^3.7.2"
   }

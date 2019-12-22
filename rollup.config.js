@@ -2,7 +2,7 @@ import json from "rollup-plugin-json";
 import typescript from "rollup-plugin-typescript2";
 import commonjs from "rollup-plugin-commonjs";
 import resolve from "rollup-plugin-node-resolve";
-import { uglify } from "rollup-plugin-uglify";
+import uglify from "@lopatnov/rollup-plugin-uglify";
 
 import pkg from "./package.json";
 
