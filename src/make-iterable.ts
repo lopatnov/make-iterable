@@ -8,19 +8,24 @@ function attachIterable(value: any) {
   if (!Symbol || !Symbol.iterator) {
     return;
   }
-  value[Symbol.iterator] = function() {
-    let context = this;
-    return {
-      next: function() {
-        if (context.length && this._index < context.length) {
-          return { value: context[this._index++], done: false };
-        } else {
-          return { done: true };
-        }
-      },
-      _index: 0
-    };
-  };
+  Object.defineProperty(value, Symbol.iterator as any, {
+    writable: false,
+    enumerable: false,
+    configurable: false,
+    value: function() {
+      let context = this;
+      return {
+        next: function() {
+          if (context.length && this._index < context.length) {
+            return { value: context[this._index++], done: false };
+          } else {
+            return { done: true };
+          }
+        },
+        _index: 0
+      };
+    }
+  });
 }
 
 function attachArrayProperties(value: any) {
