@@ -37,7 +37,7 @@ var makeIterable = require("@lopatnov/make-iterable");
 
 ## Make Objects Iterable and Array-Like
 
-### `makeIterable<T>(value: T): T | any[]`
+### `makeIterable<T>(value: T): T & any[]`
 
 ```typescript
 let x = {
