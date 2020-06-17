@@ -37,7 +37,7 @@ var makeIterable = require("@lopatnov/make-iterable");
 
 ## Make Objects Iterable and Array-Like
 
-### `makeIterable<T>(value: T): T | any[]`
+### `makeIterable<T>(value: T): T & any[]`
 
 ```typescript
 let x = {
@@ -143,4 +143,4 @@ Test it with a runkit: [https://npm.runkit.com/@lopatnov/make-iterable](https://
 
 License [Apache-2.0](https://github.com/lopatnov/make-iterable/blob/master/LICENSE)
 
-Copyright 2019-2020 Oleksandr Lopatnov
+Copyright 2019 Oleksandr Lopatnov
