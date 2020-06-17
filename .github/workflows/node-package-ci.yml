@@ -39,10 +39,11 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-          registry-url: https://npm.pkg.github.com/
 
       - name: npm run test
-        run: npm test
+        run: |
+          npm install
+          npm test
         env:
           CI: true
 
