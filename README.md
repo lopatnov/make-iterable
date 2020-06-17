@@ -5,7 +5,7 @@
 [![Build Status](https://travis-ci.org/lopatnov/make-iterable.png?branch=master)](https://travis-ci.org/lopatnov/make-iterable)
 [![Twitter](https://img.shields.io/twitter/url?url=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2F@lopatnov/make-iterable)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2F@lopatnov/make-iterable)
 
-This TypeScript library makes objects as Array like and iterable.
+How to make object as array? This TypeScript library makes objects as Array like and iterable. This change allows to iterate objects, functions and their prototypes. Making prototype iterable by this library allows to create iterable objects from classes.
 
 ## Install
 
@@ -143,4 +143,4 @@ Test it with a runkit: [https://npm.runkit.com/@lopatnov/make-iterable](https://
 
 License [Apache-2.0](https://github.com/lopatnov/make-iterable/blob/master/LICENSE)
 
-Copyright 2019 Oleksandr Lopatnov
+Copyright 2019-2020 Oleksandr Lopatnov
