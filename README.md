@@ -59,7 +59,7 @@ console.log(`iterableX.hello = ${iterableX.hello}`); // "world"
 
 ### JavaScript usage of makeIterable. Interaction with function prototype.
 
-```JavaScript
+```javascript
 class Simple {
   constructor(message) {
     this.message = message;
