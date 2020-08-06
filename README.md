@@ -23,13 +23,13 @@ npm install @lopatnov/make-iterable
 
 ## Import package to the project
 
-TypeScript:
+### TypeScript
 
 ```typescript
 import makeIterable from "@lopatnov/make-iterable";
 ```
 
-or JavaScript:
+### JavaScript
 
 ```javascript
 var makeIterable = require("@lopatnov/make-iterable");
@@ -37,13 +37,13 @@ var makeIterable = require("@lopatnov/make-iterable");
 
 ## Make Objects Iterable and Array-Like
 
-### `makeIterable<T>(value: T): T & any[]`
+### TypeScript usage of `makeIterable<T>(value: T): T & any[]`. Interaction with an object
 
 ```typescript
 let x = {
   hello: "world"
 };
-let iterableX = makeIterable(x);
+let iterableX = makeIterable(x); // <-- now object iterableX has hello property and Array properties
 
 iterableX.push(10);
 iterableX.push(20);
@@ -57,66 +57,16 @@ console.log(`[...iterableX] = ${[...iterableX]}`); // [10,20,30]
 console.log(`iterableX.hello = ${iterableX.hello}`); // "world"
 ```
 
-Before 1.1.0 version it works with Function prototype like with array-like object with Function prototype context.
-From 1.1.0 version it works with Function prototype to make array-like object:
-
-```typescript
-class Sample {
-  static count = 0;
-  message: string;
-
-  constructor(message: string) {
-    Sample.count++;
-    this.message = message;
-  }
-}
-
-makeIterable(Sample.prototype);
-
-let q = new Sample("Hello world") as Sample & any[]; // makes array-like object
-let t = new Sample("It working!") as Sample & any[]; // makes array-like object
-q.push(true, false, true, true, false, true, false, true);
-t.push("hello", "world", "!");
-
-console.log(Sample.count); // 2
-console.log([...q]); // true, false, true, true, false, true, false, true
-console.log([...t]); // "hello", "world", "!"
-console.log(q.message); // Hello world
-console.log(t.message); // It working!
-```
-
-It means that length property become enumerable in new objects.
-
-```JavaScript
-for (var index in t) {
- console.log(`t[${index}]=${t[index]}`)
-}
-
-/*
-"t[0]=hello"
-"t[1]=world"
-"t[2]=!"
-"t[message]=It working!"
-"t[length]=3"
-*/
-```
-
-To avoid this, use `Object.defineProperty(this, "length", { value: 0, writable: true, enumerable: false, configurable: false });`
+### JavaScript usage of makeIterable. Interaction with function prototype.
 
 ```JavaScript
 class Simple {
   constructor(message) {
     this.message = message;
-    Object.defineProperty(this, "length", {
-      value: 0,
-      writable: true,
-      enumerable: false,
-      configurable: false
-    });
   }
 }
 
-makeIterable(Simple.prototype);
+makeIterable(Simple.prototype); // <-- now Simple.prototype has Array properties
 
 let z = new Simple('Length is not enumerable now');
 z.push([1,2], [3,4], [5,6]);
@@ -124,7 +74,6 @@ z.push([1,2], [3,4], [5,6]);
 for (var index in z) {
  console.log(`z[${index}]=${z[index]}`)
 }
-
 /*
 "z[0]=1,2"
 "z[1]=3,4"
@@ -135,7 +84,7 @@ for (var index in z) {
 
 ## Demo
 
-See, how it's working: [https://runkit.com/lopatnov/make-iterable-demo-1.2.0](https://runkit.com/lopatnov/make-iterable-demo-1.2.0)
+See, how it's working: [https://runkit.com/lopatnov/make-iterable-demo-1.3.1](https://runkit.com/lopatnov/make-iterable-demo-1.3.1)
 
 Test it with a runkit: [https://npm.runkit.com/@lopatnov/make-iterable](https://npm.runkit.com/@lopatnov/make-iterable)
 

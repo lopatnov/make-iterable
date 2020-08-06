@@ -1,7 +1,7 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
-  (global = global || self, global.makeIterable = factory());
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.makeIterable = factory());
 }(this, (function () { 'use strict';
 
   var objNames = Object.getOwnPropertyNames(Object.prototype), arrNames = Object.getOwnPropertyNames(Array.prototype), iterableNames = arrNames.filter(function (name) {
