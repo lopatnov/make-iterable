@@ -78,5 +78,5 @@ function makeIterable(value) {
     return value;
 }
 
-export default makeIterable;
+export { makeIterable as default };
 //# sourceMappingURL=make-iterable.es.js.map
