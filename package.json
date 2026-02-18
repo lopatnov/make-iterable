@@ -2,81 +2,77 @@
   "name": "@lopatnov/make-iterable",
   "version": "3.0.0",
   "description": "A TypeScript library that converts objects, functions, and their prototypes into Array-like iterable entities. Supports ES Modules, CommonJS, and UMD.",
-  "author": "lopatnov",
-  "license": "Apache-2.0",
+  "keywords": [
+    "array",
+    "array-like",
+    "esm",
+    "for-of",
+    "function",
+    "iterable",
+    "iterator",
+    "javascript",
+    "mixin",
+    "object",
+    "prototype",
+    "spread",
+    "symbol-iterator",
+    "typescript",
+    "umd"
+  ],
   "homepage": "https://lopatnov.github.io/make-iterable/",
-  "engines": {
-    "node": ">=20.6.0"
+  "bugs": {
+    "url": "https://github.com/lopatnov/make-iterable/issues"
   },
-  "umdName": "makeIterable",
+  "license": "Apache-2.0",
+  "author": "lopatnov",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lopatnov/make-iterable.git"
+  },
   "source": "src/make-iterable.ts",
+  "files": [
+    "dist"
+  ],
   "main": "dist/make-iterable.cjs",
   "module": "dist/make-iterable.esm.mjs",
   "browser": "dist/make-iterable.umd.js",
   "types": "dist/make-iterable.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/make-iterable.d.ts",
       "import": "./dist/make-iterable.esm.mjs",
       "require": "./dist/make-iterable.cjs",
-      "browser": "./dist/make-iterable.umd.js",
-      "types": "./dist/make-iterable.d.ts"
+      "browser": "./dist/make-iterable.umd.js"
     }
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/lopatnov/make-iterable.git"
-  },
-  "bugs": {
-    "url": "https://github.com/lopatnov/make-iterable/issues"
+  "publishConfig": {
+    "access": "public"
   },
   "scripts": {
     "build": "rollup -c",
     "watch": "rollup -cw",
     "test": "node --import tsx --test tests/make-iterable.test.ts",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "format": "prettier --write .",
-    "format:check": "prettier --check .",
+    "lint": "oxlint src tests",
+    "lint:fix": "oxlint --fix src tests",
+    "format": "oxfmt",
+    "format:check": "oxfmt --check",
     "configure-npm": "node ./set-registry.js -s https://registry.npmjs.org",
     "configure-gpr": "node ./set-registry.js -s https://npm.pkg.github.com"
   },
-  "files": [
-    "dist"
-  ],
-  "publishConfig": {
-    "access": "public"
-  },
-  "keywords": [
-    "iterable",
-    "iterator",
-    "array-like",
-    "array",
-    "symbol-iterator",
-    "for-of",
-    "spread",
-    "object",
-    "function",
-    "prototype",
-    "mixin",
-    "typescript",
-    "javascript",
-    "esm",
-    "umd"
-  ],
   "devDependencies": {
-    "@eslint/js": "^10.0.1",
     "@lopatnov/rollup-plugin-uglify": "^4.0.0",
     "@rollup/plugin-commonjs": "^29.0.0",
     "@rollup/plugin-node-resolve": "^16.0.3",
     "@rollup/plugin-typescript": "^12.3.0",
-    "eslint": "^10.0.0",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-prettier": "^5.0.0",
-    "prettier": "^3.0.0",
+    "oxfmt": "latest",
+    "oxlint": "latest",
     "rollup": "^4.0.0",
     "tslib": "^2.0.0",
     "tsx": "^4.0.0",
-    "typescript": "^5.0.0",
-    "typescript-eslint": "^8.0.0"
-  }
+    "typescript": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=20.6.0"
+  },
+  "umdName": "makeIterable"
 }

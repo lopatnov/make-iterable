@@ -14,19 +14,19 @@ export default [
       {
         file: "dist/make-iterable.cjs",
         format: "cjs",
-        sourcemap: true
+        sourcemap: true,
       },
       {
         file: "dist/make-iterable.esm.mjs",
         format: "es",
-        sourcemap: true
+        sourcemap: true,
       },
       {
         file: "dist/make-iterable.umd.js",
         format: "umd",
         name: pkg.umdName,
-        sourcemap: true
-      }
+        sourcemap: true,
+      },
     ],
     external: [...Object.keys(pkg.dependencies || {}), ...Object.keys(pkg.peerDependencies || {})],
     plugins: [
@@ -36,9 +36,9 @@ export default [
         tsconfig: "./tsconfig.json",
         declaration: true,
         declarationDir: "./dist",
-        outDir: "./dist"
-      })
-    ]
+        outDir: "./dist",
+      }),
+    ],
   },
   {
     input: pkg.source,
@@ -46,16 +46,16 @@ export default [
       file: "dist/make-iterable.umd.min.js",
       name: pkg.umdName,
       format: "umd",
-      sourcemap: false
+      sourcemap: false,
     },
     plugins: [
       resolve(),
       commonjs(),
       typescript({
         tsconfig: "./tsconfig.json",
-        sourceMap: false
+        sourceMap: false,
       }),
-      uglify()
-    ]
-  }
+      uglify(),
+    ],
+  },
 ];

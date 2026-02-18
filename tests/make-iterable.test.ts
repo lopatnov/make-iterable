@@ -12,7 +12,7 @@ describe("Base tests", () => {
     const say = () => "who",
       x = {
         hello: "world",
-        say: say
+        say: say,
       },
       iterableX = makeIterable(x);
     assert.strictEqual(iterableX.hello, x.hello);

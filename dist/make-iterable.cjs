@@ -23,9 +23,9 @@ function attachIterable(value) {
                     else {
                         return { value: undefined, done: true };
                     }
-                }
+                },
             };
-        }
+        },
     });
 }
 function attachArrayProperties(value) {
@@ -46,7 +46,7 @@ function attachArrayProperties(value) {
                     value: index,
                     writable: true,
                     enumerable: false,
-                    configurable: false
+                    configurable: false,
                 });
             }
             else {
