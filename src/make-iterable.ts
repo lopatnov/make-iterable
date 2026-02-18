@@ -22,9 +22,9 @@ function attachIterable(value: any): void {
           } else {
             return { value: undefined, done: true };
           }
-        }
+        },
       };
-    }
+    },
   });
 }
 
@@ -52,7 +52,7 @@ function attachArrayProperties(value: any): void {
           value: index,
           writable: true,
           enumerable: false,
-          configurable: false
+          configurable: false,
         });
       } else {
         value[name] = proto[name];
