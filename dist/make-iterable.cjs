@@ -24,13 +24,15 @@ function attachIterable(value) {
                     else {
                         return { value: undefined, done: true };
                     }
-                },
+                }
             };
-        },
+        }
     });
 }
 function attachArrayProperties(value) {
-    if (typeof value.push === "function") {
+    if (typeof value.push === "function" &&
+        typeof value.pop === "function" &&
+        typeof value.splice === "function") {
         return;
     }
     const proto = Array.prototype;
@@ -50,7 +52,7 @@ function attachArrayProperties(value) {
                     value: index,
                     writable: true,
                     enumerable: false,
-                    configurable: false,
+                    configurable: false
                 });
             }
             else {

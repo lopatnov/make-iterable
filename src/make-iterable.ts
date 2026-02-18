@@ -22,14 +22,18 @@ function attachIterable(value: any): void {
           } else {
             return { value: undefined, done: true };
           }
-        },
+        }
       };
-    },
+    }
   });
 }
 
 function attachArrayProperties(value: any): void {
-  if (typeof value.push === "function") {
+  if (
+    typeof value.push === "function" &&
+    typeof value.pop === "function" &&
+    typeof value.splice === "function"
+  ) {
     return;
   }
   const proto = Array.prototype as any;
@@ -48,7 +52,7 @@ function attachArrayProperties(value: any): void {
           value: index,
           writable: true,
           enumerable: false,
-          configurable: false,
+          configurable: false
         });
       } else {
         value[name] = proto[name];
