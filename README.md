@@ -61,8 +61,8 @@ The function attaches all `Array.prototype` methods (`push`, `pop`, `splice`, `s
 ### Make an Object Iterable and Array-Like
 
 ```typescript
-let x = { hello: "world" };
-let iterableX = makeIterable(x);
+const x = { hello: "world" };
+const iterableX = makeIterable(x);
 
 iterableX.push(10); // [10]
 iterableX.push(20); // [10, 20]
@@ -97,7 +97,7 @@ class Simple {
 
 makeIterable(Simple.prototype);
 
-let z = new Simple("Length is not enumerable now") as Simple & any[];
+const z = new Simple("Length is not enumerable now") as Simple & any[];
 z.push([1, 2], [3, 4], [5, 6]);
 
 for (const index in z) {

@@ -4,12 +4,14 @@
 
 | Version | Supported          |
 | ------- | ------------------ |
-| 1.x.x   | :white_check_mark: |
+| 3.x.x   | :white_check_mark: |
+| 2.x.x   | :x:                |
+| < 2.0   | :x:                |
 
 ## Reporting a Vulnerability
 
-Create an [issue][issue] to report a vulnerability, please.
+Please create an [issue][issue] to report a vulnerability.
 
-Go to <https://github.com/lopatnov/static-server-express/issues>, create `New issue`, describe the vulnerability as well as possible. When I read the vulnerability description, I'll give a feedback on futher actions.
+Go to <https://github.com/lopatnov/make-iterable/issues>, create a `New issue`, and describe the vulnerability in as much detail as possible. Once I review the description, I will provide feedback on the appropriate next steps.
 
 [issue]: https://github.com/lopatnov/make-iterable/issues
