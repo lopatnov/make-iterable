@@ -1,51 +1,42 @@
-let objNames = Object.getOwnPropertyNames(Object.prototype),
-  arrNames = Object.getOwnPropertyNames(Array.prototype),
-  iterableNames: any[] = arrNames.filter(function(name) {
-    return objNames.indexOf(name) === -1;
-  });
+const objNames = Object.getOwnPropertyNames(Object.prototype);
+const arrNames = Object.getOwnPropertyNames(Array.prototype);
+const iterableNames: string[] = arrNames.filter(function (name) {
+  return objNames.indexOf(name) === -1;
+});
 
-function attachIterable(value: any) {
+function attachIterable(value: any): void {
   if (!Symbol || !Symbol.iterator) {
     return;
   }
-  Object.defineProperty(value, Symbol.iterator as any, {
+  Object.defineProperty(value, Symbol.iterator, {
     writable: false,
     enumerable: false,
     configurable: false,
-    value: function() {
-      let context = this;
+    value: function (this: any) {
+      let index = 0;
       return {
-        next: function() {
-          if (context.length && this._index < context.length) {
-            return { value: context[this._index++], done: false };
+        next: () => {
+          if (this.length && index < this.length) {
+            return { value: this[index++], done: false };
           } else {
-            return { done: true };
+            return { value: undefined, done: true };
           }
-        },
-        _index: 0
+        }
       };
     }
   });
 }
 
-function attachArrayProperties(value: any) {
-  iterableNames.forEach(name => {
-    if (Array.prototype[name] instanceof Function) {
-      Object.defineProperty(value, name, {
-        value: function() {
-          return Array.prototype[name].apply(this, arguments);
-        },
-        configurable: true,
-        writable: true,
-        enumerable: false
-      });
-      value[name] = function() {
-        const arrayFunction = Array.prototype[name];
-        return arrayFunction.apply(this, arguments);
+function attachArrayProperties(value: any): void {
+  const proto = Array.prototype as any;
+  iterableNames.forEach((name) => {
+    if (proto[name] instanceof Function) {
+      value[name] = function (this: any, ...args: any[]): any {
+        return proto[name].apply(this, args);
       };
     } else {
       if (name === "length") {
-        var index = 0;
+        let index = 0;
         while (value[index] !== undefined) {
           index++;
         }
@@ -56,7 +47,7 @@ function attachArrayProperties(value: any) {
           configurable: false
         });
       } else {
-        value[name] = Array.prototype[name];
+        value[name] = proto[name];
       }
     }
   });

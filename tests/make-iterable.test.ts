@@ -2,12 +2,12 @@ import makeIterable from "../src/make-iterable";
 
 describe("Base tests", () => {
   it("should extend the value", () => {
-    let x = {},
+    const x = {},
       iterableX = makeIterable(x);
     expect(iterableX).toBe(x);
   });
   it("should save all methods", () => {
-    let say = () => "who",
+    const say = () => "who",
       x = {
         hello: "world",
         say: say
@@ -22,15 +22,15 @@ describe("Base tests", () => {
 
 describe("Array tests", () => {
   it("should have push and pop methods", () => {
-    let x = {},
+    const x = {},
       iterableX = makeIterable(x);
     expect(iterableX.push).toBeDefined();
     expect(iterableX.pop).toBeDefined();
   });
   it("should convert function", () => {
-    let x = function(){},
+    const x = function () {},
       iterableX = makeIterable(x);
-    expect(iterableX.push(1,2,3,4,5)).toBe(5);
+    expect(iterableX.push(1, 2, 3, 4, 5)).toBe(5);
     expect(iterableX.indexOf(3)).toBe(2);
     expect(iterableX[1]).toBe(2);
   });
@@ -38,14 +38,14 @@ describe("Array tests", () => {
 
 describe("Iterator tests", () => {
   it("should convert to iterator", () => {
-    let x = {},
+    const x = {},
       iterableX = makeIterable(x);
     iterableX.push(10);
     iterableX.push(20);
     iterableX.push(30);
     iterableX.push(40);
 
-    let actual = [...iterableX];
+    const actual = [...iterableX];
     expect(actual[0]).toBe(10);
     expect(actual[1]).toBe(20);
     expect(actual[2]).toBe(30);
@@ -55,19 +55,19 @@ describe("Iterator tests", () => {
 
 describe("Function prototype tests", () => {
   it("should work with instances of the function, not with prototype", () => {
-    const TestConstructorFunction = function(this: any, a: any, b: any) {
+    const TestConstructorFunction = function (this: any, a: any, b: any) {
       this.a = a;
       this.b = b;
     };
     makeIterable(TestConstructorFunction.prototype);
 
-    let x = new (TestConstructorFunction as any)(1, 2);
-    let y = new (TestConstructorFunction as any)(3, 4);
+    const x = new (TestConstructorFunction as any)(1, 2);
+    const y = new (TestConstructorFunction as any)(3, 4);
     x.push(10, 20, 30, 40, 50);
     y.push("hello", "world");
 
-    let actual1 = [...x];
-    let actual2 = [...y];
+    const actual1 = [...x];
+    const actual2 = [...y];
     expect(x[0]).toBe(10);
     expect(actual1[1]).toBe(20);
     expect(y[0]).toBe("hello");
@@ -90,13 +90,13 @@ describe("Function prototype tests", () => {
 
     makeIterable(Sample.prototype);
 
-    let x = new Sample("Hello world") as Sample & any[];
-    let y = new Sample("It working!") as Sample & any[];
+    const x = new Sample("Hello world") as Sample & any[];
+    const y = new Sample("It working!") as Sample & any[];
     x.push(true, false, true, true, false, true, false, true);
     y.push("hello", "world", "!");
 
-    let actual1 = [...x];
-    let actual2 = [...y];
+    const actual1 = [...x];
+    const actual2 = [...y];
     expect(x[0]).toBe(true);
     expect(y[0]).toBe("hello");
     expect(actual1[1]).toBe(false);

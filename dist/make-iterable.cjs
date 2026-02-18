@@ -1,4 +1,8 @@
-var objNames = Object.getOwnPropertyNames(Object.prototype), arrNames = Object.getOwnPropertyNames(Array.prototype), iterableNames = arrNames.filter(function (name) {
+'use strict';
+
+const objNames = Object.getOwnPropertyNames(Object.prototype);
+const arrNames = Object.getOwnPropertyNames(Array.prototype);
+const iterableNames = arrNames.filter(function (name) {
     return objNames.indexOf(name) === -1;
 });
 function attachIterable(value) {
@@ -10,40 +14,31 @@ function attachIterable(value) {
         enumerable: false,
         configurable: false,
         value: function () {
-            var context = this;
+            let index = 0;
             return {
-                next: function () {
-                    if (context.length && this._index < context.length) {
-                        return { value: context[this._index++], done: false };
+                next: () => {
+                    if (this.length && index < this.length) {
+                        return { value: this[index++], done: false };
                     }
                     else {
-                        return { done: true };
+                        return { value: undefined, done: true };
                     }
-                },
-                _index: 0
+                }
             };
         }
     });
 }
 function attachArrayProperties(value) {
-    iterableNames.forEach(function (name) {
-        if (Array.prototype[name] instanceof Function) {
-            Object.defineProperty(value, name, {
-                value: function () {
-                    return Array.prototype[name].apply(this, arguments);
-                },
-                configurable: true,
-                writable: true,
-                enumerable: false
-            });
-            value[name] = function () {
-                var arrayFunction = Array.prototype[name];
-                return arrayFunction.apply(this, arguments);
+    const proto = Array.prototype;
+    iterableNames.forEach((name) => {
+        if (proto[name] instanceof Function) {
+            value[name] = function (...args) {
+                return proto[name].apply(this, args);
             };
         }
         else {
             if (name === "length") {
-                var index = 0;
+                let index = 0;
                 while (value[index] !== undefined) {
                     index++;
                 }
@@ -55,7 +50,7 @@ function attachArrayProperties(value) {
                 });
             }
             else {
-                value[name] = Array.prototype[name];
+                value[name] = proto[name];
             }
         }
     });
@@ -71,12 +66,12 @@ function makeIterable(value) {
         typeof value === "boolean" ||
         typeof value === "number" ||
         typeof value === "string") {
-        throw new Error("Incorrect argument: " + value);
+        throw new Error(`Incorrect argument: ${value}`);
     }
     attachArrayProperties(value);
     attachIterable(value);
     return value;
 }
 
-export { makeIterable as default };
-//# sourceMappingURL=make-iterable.es.js.map
+module.exports = makeIterable;
+//# sourceMappingURL=make-iterable.cjs.map
