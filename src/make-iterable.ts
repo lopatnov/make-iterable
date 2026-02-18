@@ -1,11 +1,12 @@
-const objNames = Object.getOwnPropertyNames(Object.prototype);
+const objNameSet = new Set(Object.getOwnPropertyNames(Object.prototype));
 const arrNames = Object.getOwnPropertyNames(Array.prototype);
-const iterableNames: string[] = arrNames.filter(function (name) {
-  return objNames.indexOf(name) === -1;
-});
+const iterableNames: string[] = arrNames.filter((name) => !objNameSet.has(name));
 
 function attachIterable(value: any): void {
   if (!Symbol || !Symbol.iterator) {
+    return;
+  }
+  if (Object.getOwnPropertyDescriptor(value, Symbol.iterator)) {
     return;
   }
   Object.defineProperty(value, Symbol.iterator, {
@@ -28,6 +29,9 @@ function attachIterable(value: any): void {
 }
 
 function attachArrayProperties(value: any): void {
+  if (typeof value.push === "function") {
+    return;
+  }
   const proto = Array.prototype as any;
   iterableNames.forEach((name) => {
     if (proto[name] instanceof Function) {
@@ -54,9 +58,10 @@ function attachArrayProperties(value: any): void {
 }
 
 /**
- * Convert the value to iterable and Array like object.
+ * Convert the value to iterable and Array-like object.
  * @param value The value to convert
- * @returns the value with it's type and any[]
+ * @returns the value with its type and any[]
+ * @throws {Error} if value is null, undefined, boolean, number, or string
  */
 function makeIterable<T>(value: T): T & Array<any> {
   if (

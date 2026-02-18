@@ -12,13 +12,14 @@ describe("Base tests", () => {
     const say = () => "who",
       x = {
         hello: "world",
-        say: say,
+        say: say
       },
       iterableX = makeIterable(x);
     assert.strictEqual(iterableX.hello, x.hello);
     assert.strictEqual(iterableX.say, x.say);
     assert.strictEqual(x.hello, "world");
     assert.strictEqual(x.say, say);
+    assert.strictEqual(x, iterableX);
   });
 });
 
@@ -108,5 +109,57 @@ describe("Function prototype tests", () => {
     assert.strictEqual(Sample.count, 2);
     assert.strictEqual(x.message, "Hello world");
     assert.strictEqual(y.message, "It working!");
+  });
+});
+
+describe("Error tests", () => {
+  it("should throw for null", () => {
+    assert.throws(() => makeIterable(null as any));
+  });
+  it("should throw for undefined", () => {
+    assert.throws(() => makeIterable(undefined as any));
+  });
+  it("should throw for number", () => {
+    assert.throws(() => makeIterable(42 as any));
+  });
+  it("should throw for string", () => {
+    assert.throws(() => makeIterable("x" as any));
+  });
+  it("should throw for boolean", () => {
+    assert.throws(() => makeIterable(true as any));
+  });
+});
+
+describe("Idempotency tests", () => {
+  it("should not throw when called twice on the same object", () => {
+    const x = {};
+    makeIterable(x);
+    assert.doesNotThrow(() => makeIterable(x));
+  });
+  it("should preserve existing items when called twice", () => {
+    const x = makeIterable({}) as any;
+    x.push(1, 2, 3);
+    makeIterable(x);
+    assert.strictEqual(x.length, 3);
+    assert.strictEqual(x[0], 1);
+  });
+});
+
+describe("Length and iteration tests", () => {
+  it("should have length 0 on fresh object", () => {
+    const x = makeIterable({}) as any;
+    assert.strictEqual(x.length, 0);
+  });
+  it("should update length after push", () => {
+    const x = makeIterable({}) as any;
+    x.push("a", "b");
+    assert.strictEqual(x.length, 2);
+  });
+  it("for-of should iterate all items", () => {
+    const x = makeIterable({}) as any;
+    x.push(1, 2, 3);
+    const result: number[] = [];
+    for (const item of x) result.push(item);
+    assert.deepStrictEqual(result, [1, 2, 3]);
   });
 });
