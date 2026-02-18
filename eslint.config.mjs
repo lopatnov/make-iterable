@@ -4,14 +4,7 @@ import eslintPluginPrettier from "eslint-plugin-prettier/recommended";
 
 export default tseslint.config(
   {
-    ignores: [
-      "dist/",
-      "node_modules/",
-      "coverage/",
-      "set-registry.js",
-      "jest.config.js",
-      "rollup.config.mjs"
-    ]
+    ignores: ["dist/", "node_modules/", "coverage/", "set-registry.js", "rollup.config.mjs"]
   },
   js.configs.recommended,
   ...tseslint.configs.recommended,
