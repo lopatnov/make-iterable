@@ -55,7 +55,9 @@ export default [
         tsconfig: "./tsconfig.json",
         sourceMap: false,
       }),
-      uglify(),
+      uglify({
+        hook: "renderChunk",
+      }),
     ],
   },
 ];

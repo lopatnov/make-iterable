@@ -1,12 +1,28 @@
-# make-iterable
+# @lopatnov/make-iterable
 
-[![npm](https://img.shields.io/npm/dt/@lopatnov/make-iterable)](https://www.npmjs.com/package/@lopatnov/make-iterable)
-[![NPM version](https://badge.fury.io/js/%40lopatnov%2Fmake-iterable.svg)](https://www.npmjs.com/package/@lopatnov/make-iterable)
+> A TypeScript library that converts objects, functions, and their prototypes into Array-like iterable entities.
+> Apply it to a class prototype and every instance becomes iterable automatically.
+
+[![npm downloads](https://img.shields.io/npm/dt/@lopatnov/make-iterable)](https://www.npmjs.com/package/@lopatnov/make-iterable)
+[![npm version](https://badge.fury.io/js/%40lopatnov%2Fmake-iterable.svg)](https://www.npmjs.com/package/@lopatnov/make-iterable)
 [![License](https://img.shields.io/github/license/lopatnov/make-iterable)](https://github.com/lopatnov/make-iterable/blob/master/LICENSE)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)
+[![GitHub issues](https://img.shields.io/github/issues/lopatnov/make-iterable)](https://github.com/lopatnov/make-iterable/issues)
 [![GitHub stars](https://img.shields.io/github/stars/lopatnov/make-iterable)](https://github.com/lopatnov/make-iterable/stargazers)
 
-A TypeScript library that converts objects, functions, and their prototypes into Array-like iterable entities. Apply it to a class prototype and every instance becomes iterable automatically.
+---
+
+## Table of Contents
+
+- [Installation](#installation)
+- [Usage](#usage)
+- [API](#api)
+- [Examples](#examples)
+- [Demo](#demo)
+- [Contributing](#contributing)
+- [Built With](#built-with)
+- [License](#license)
+
+---
 
 ## Installation
 
@@ -14,11 +30,13 @@ A TypeScript library that converts objects, functions, and their prototypes into
 npm install @lopatnov/make-iterable
 ```
 
-Browser (CDN):
+**Browser (CDN):**
 
 ```html
 <script src="//lopatnov.github.io/make-iterable/dist/make-iterable.umd.min.js"></script>
 ```
+
+---
 
 ## Usage
 
@@ -44,6 +62,8 @@ const makeIterable = require("@lopatnov/make-iterable");
 </script>
 ```
 
+---
+
 ## API
 
 ```typescript
@@ -55,6 +75,8 @@ Converts `value` to an Array-like iterable object **in place** and returns it. T
 The function attaches all `Array.prototype` methods (`push`, `pop`, `splice`, `slice`, `indexOf`, `map`, `filter`, `forEach`, etc.) and implements `Symbol.iterator`, enabling `for...of` loops and the spread operator.
 
 **Throws** `Error` when `value` is `undefined`, `null`, a `boolean`, a `number`, or a `string`.
+
+---
 
 ## Examples
 
@@ -120,19 +142,35 @@ console.log(iterableFn.indexOf(3)); // 2
 console.log([...iterableFn]); // [1, 2, 3, 4, 5]
 ```
 
+---
+
 ## Demo
 
 - [RunKit demo](https://runkit.com/lopatnov/make-iterable-demo-1.3.1)
 - [Interactive playground](https://npm.runkit.com/@lopatnov/make-iterable)
 
+---
+
 ## Contributing
 
-Feel free to open issues or pull requests at [GitHub](https://github.com/lopatnov/make-iterable/issues). See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
+Contributions are welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull request.
+
+- Bug reports → [open an issue](https://github.com/lopatnov/make-iterable/issues)
+- Questions → [Discussions](https://github.com/lopatnov/make-iterable/discussions)
+- Found it useful? A [star on GitHub](https://github.com/lopatnov/make-iterable) helps others discover the project
+
+---
+
+## Built With
+
+- [TypeScript](https://www.typescriptlang.org/) — strict typing throughout
+- [Rollup](https://rollupjs.org/) — bundled to ESM, CJS, and UMD formats
+- [Node.js Test Runner](https://nodejs.org/api/test.html) — built-in test runner, zero dependencies
+- [OXLint](https://oxc.rs/docs/guide/usage/linter.html) — fast JavaScript/TypeScript linter
+- [oxfmt](https://github.com/nicolo-ribaudo/oxfmt) — code formatter
+
+---
 
 ## License
 
-[Apache-2.0](https://github.com/lopatnov/make-iterable/blob/master/LICENSE)
-
-Copyright 2019–2026 Oleksandr Lopatnov
-
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-lopatnov-informational?style=social&logo=linkedin)](https://www.linkedin.com/in/lopatnov/)
+[Apache-2.0](https://github.com/lopatnov/make-iterable/blob/master/LICENSE) © 2019–2026 [Oleksandr Lopatnov](https://github.com/lopatnov) · [LinkedIn](https://www.linkedin.com/in/lopatnov/)
